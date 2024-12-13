@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Person Details</title>
+    <script defer src="data.js"></script>
+    <script>
+        window.onload = function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const personId = parseInt(urlParams.get("id"));
+
+            const person = persons.find((p) => p.id === personId);
+
+            if (person) {
+                document.getElementById("person-name").textContent = person.name;
+                document.getElementById("person-image").src = person.image;
+                document.getElementById("person-details").textContent = person.details;
+            } else {
+                document.body.innerHTML = "<p>Person not found</p>";
+            }
+        };
+    </script>
+    <style>
+        img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="person-name"></h1>
+    <img id="person-image" alt="" />
+    <p id="person-details"></p>
+    <a href="index.html">Go Back</a>
+</body>
+
+</html>

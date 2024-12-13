@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Persons</title>
+    <script defer src="data.js"></script>
+    <script>
+        window.onload = function () {
+            const grid = document.getElementById("persons-grid");
+
+            persons.forEach((person) => {
+                const link = document.createElement("a");
+                link.href = `person.html?id=${person.id}`;
+                link.innerHTML = `
+          <img src="${person.image}" alt="${person.name}" />
+          <p>${person.name}</p>
+        `;
+                grid.appendChild(link);
+            });
+        };
+    </script>
+    <style>
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            text-align: center;
+        }
+
+        img {
+            width: 100%;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Choose a Person</h1>
+    <div class="grid" id="persons-grid"></div>
+</body>
+
+</html>
